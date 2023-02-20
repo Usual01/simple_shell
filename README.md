@@ -1,1 +1,3 @@
-# simple_shell
+This is an Alx software engineering project. We were tasked to create a simple command line interpreter that works just like the bash shell
+We built a replica of some of the built-in functions like cd, env, exit, setenv, unsetenv, help...
+This shell can interpret chain and piped commamds
