@@ -10,7 +10,6 @@ ssize_t _getline(char **buffer_p)
 	static char *buffer;
 	static size_t len;
 	ssize_t r;
-	char *p;
 
 	r = enter_buffer(&buffer, &len);
 	if (r == -1)

@@ -59,8 +59,8 @@ void loop(void);
 char **_strtok(char *input);
 int wordcount(char *str);
 char *tokenize(char *input, const char *delim, char **saveptr);
-void output(char **args);
-void execute(char **args);
+void output_cmd(char **args);
+void execute_cmd(char **args);
 void sighandler(int sig_num);
 int check_arg(char *firstarg, char *arg0);
 

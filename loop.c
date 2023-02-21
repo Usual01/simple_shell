@@ -27,12 +27,10 @@ void loop(void)
 {
 	char *buffer, **argv, *command;
 	int looped;
-	size_t size;
 
 	signal(SIGINT, sighandler);
 	signal(SIGQUIT, SIG_IGN);
 
-	size = 0;
 	looped = 0;
 	buffer = NULL;
 	while (1)
@@ -48,7 +46,7 @@ void loop(void)
 				if (check_built_in(argv, buffer) == -1)
 				{
 					inchild = 1;
-					output(argv);
+					output_cmd(argv);
 				}
 				if (check_arg(command, argv[0]) == 0)
 					free(argv);

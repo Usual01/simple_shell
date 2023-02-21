@@ -110,7 +110,7 @@ int _printenv(char **args)
 }
 
 /**
- * hosh_help - Print out help for given commands or list all builtins available
+ * _help - Print out help for given commands or list all builtins available
  * @args: List of arguments passed to hosh_help
  *
  * Return: 0 on success, 1 on failure

@@ -7,15 +7,15 @@
  *
  * Return: void
  */
-void output(char **args)
+void output_cmd(char **args)
 {
 	if (args[0][0] == '/')
-		execute(args);
+		execute_cmd(args);
 	else
 	{
 		args = check_path(args);
 		if (args != NULL)
-			execute(args);
+			execute_cmd(args);
 	}
 }
 
@@ -26,7 +26,7 @@ void output(char **args)
  *
  * Return: void
  */
-void execute(char **args)
+void execute_cmd(char **args)
 {
 	pid_t pid;
 	int status = 0;
