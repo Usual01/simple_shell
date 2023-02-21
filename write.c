@@ -1,23 +1,22 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * _puts - prints a string, followed by a newline, to stdout
- *
- * @str: pointer to the string to print
+ * _puts - prints a string
+ * @ch: pointer to the string
  */
-void _puts(char *str)
+void _puts(char *ch)
 {
-	int n = 0;
+	int i = 0;
 
-	while (*(str + n) != '\0')
+	while (*(ch + i) != '\0')
 	{
-		_putchar(*(str + n));
-		n++;
+		_putchar(*(ch + i));
+		i++;
 	}
 }
 
 /**
- * _putchar - writes the character c to stdout
+ * _putchar - prints the character
  *
  * @c: The character to print
  *
@@ -27,3 +26,4 @@ void _puts(char *str)
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
+}

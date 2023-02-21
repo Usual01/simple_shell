@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * smart_alloc - allocate space if there is any, and add memory
@@ -32,3 +32,4 @@ void free_array(char **array)
 {
 	free(array[0]);
 	free(array);
+}

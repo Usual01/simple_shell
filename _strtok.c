@@ -1,13 +1,13 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * make_args - make array of pointer arguments
+ * _strtok - make array of pointer arguments
  *
  * @input: User input to be turned into arguments
  *
  * Return: argument list
  */
-char **make_args(char *input)
+char **_strtok(char *input)
 {
 	char **args, *arg, *pos, *delims;
 	int i, wc;
@@ -86,3 +86,42 @@ int check_arg(char *firstarg, char *arg0)
 	if (_strncmp(firstarg, arg0, len) == 0)
 		return (0);
 	return (1);
+}
+/**
+ * tokenize - create a token from @input
+ *
+ * @input: string to tokenize
+ * @delim: delimitor string
+ * @saveptr: save pointer
+ *
+ * Return: the next token found in @input string
+ */
+char *tokenize(char *input, const char *delim, char **saveptr)
+{
+	char *token;
+	int i;
+
+	i = 0;
+	if (input == NULL)
+		input = *saveptr;
+	input += _strspn(input, delim);
+	if (*input == '\0')
+	{
+		*saveptr = input;
+		return (NULL);
+	}
+	token = input;
+	input = _strpbrk(input, delim);
+	if (input == NULL)
+	{
+		while (token[i] != '\0')
+			i++;
+		*saveptr = token + i;
+	}
+	else
+	{
+		*input = '\0';
+		*saveptr = input + 1;
+	}
+	return (token);
+}

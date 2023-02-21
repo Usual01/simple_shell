@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * _strlen - return the length of a string
@@ -121,3 +121,4 @@ char *_strpbrk(char *s, const char *accept)
 		i++;
 	}
 	return (NULL);
+}
