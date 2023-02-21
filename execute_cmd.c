@@ -1,32 +1,32 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * output - decide what to do with @args
+ * output_cmd - decide what to do with @args
  *
  * @args: array of argument strings
  *
  * Return: void
  */
-void output(char **args)
+void output_cmd(char **args)
 {
 	if (args[0][0] == '/')
-		execute(args);
+		execute_cmd(args);
 	else
 	{
 		args = check_path(args);
 		if (args != NULL)
-			execute(args);
+			execute_cmd(args);
 	}
 }
 
 /**
- * execute - execute a program
+ * execute_cmd - execute a program
  *
  * @args: array of argument strings
  *
  * Return: void
  */
-void execute(char **args)
+void execute_cmd(char **args)
 {
 	pid_t pid;
 	int status = 0;

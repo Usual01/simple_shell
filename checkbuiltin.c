@@ -1,21 +1,21 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * check_builtins - Check to see if given command is a builtin
+ * check_built_in - Check to see if given command is a builtin
  * @args: Array holding command and all its arguments
  * @input: The user input received from getline
  *
  * Return: the return value of the builtin called on success,
  * or -1 if it failed
  */
-int check_builtins(char **args, char *input)
+int check_built_in(char **args, char *input)
 {
 	builtins_t builtins[] = {
-		{"exit", hosh_exit},
-		{"env", hosh_printenv},
-		{"unsetenv", hosh_unsetenv},
-		{"setenv", hosh_setenv},
-		{"help", hosh_help},
+		{"exit", my_exit},
+		{"env", _printenv},
+		{"unsetenv", _unsetenv},
+		{"setenv", _setenv},
+		{"help", _help},
 		{NULL, NULL}
 	};
 	int i, len;
@@ -29,3 +29,4 @@ int check_builtins(char **args, char *input)
 			return (builtins[i].func(args));
 	}
 	return (-1);
+}

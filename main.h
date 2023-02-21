@@ -2,7 +2,7 @@
 #define MAIN_H
 #define OUT 0
 #define IN 1
-
+#define BUFFER_SIZE 1024
 /* --Global Variables-- */
 extern char **environ;
 int inchild;
@@ -56,11 +56,11 @@ typedef struct help_s
 
 /* --General Functions-- */
 void loop(void);
-char **make_args(char *input);
+char **_strtok(char *input);
 int wordcount(char *str);
 char *tokenize(char *input, const char *delim, char **saveptr);
-void output(char **args);
-void execute(char **args);
+void output_cmd(char **args);
+void execute_cmd(char **args);
 void sighandler(int sig_num);
 int check_arg(char *firstarg, char *arg0);
 
@@ -74,17 +74,17 @@ char *path_concat(char *s1, char *s2);
 char *_copypath(char *name);
 
 /* --Builtin Functions-- */
-int check_builtins(char **args, char *input);
-int hosh_printenv(char **args);
-int hosh_setenv(char **args);
-int hosh_unsetenv(char **args);
-int hosh_exit(char **args, char *input);
-int hosh_help(char **args);
+int check_built_in(char **args, char *input);
+int _printenv(char **args);
+int _setenv(char **args);
+int _unsetenv(char **args);
+int my_exit(char **args, char *input);
+int _help(char **args);
 
 /* --Env Functions-- */
-int _unsetenv(char *name);
+int my_unsetenv(char *name);
 char *_findenv(char *name);
-int _addenv(char *newvar, char *name);
+int my_setenv(char *newvar, char *name);
 
 /* --Print Functions-- */
 void _puts(char *str);
@@ -110,3 +110,9 @@ void help_setenv(void);
 void help_unsetenv(void);
 void help_help(void);
 void print_help(void);
+
+/*getline functions*/
+ssize_t _getline(char **buffer_p);
+ssize_t enter_buffer(char **ptr_buffer, size_t *len);
+ssize_t my_getline(char **ptr_buffer, size_t *length);
+#endif

@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * check_path - Check the path for the given file and if found
@@ -100,3 +100,4 @@ char *_copypath(char *name)
 		i++;
 	}
 	return (NULL);
+}
