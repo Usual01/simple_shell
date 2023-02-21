@@ -1,8 +1,8 @@
 #include "main.h"
 /**
  * _getline - function for get line
- * @var: variable
- * Return: variable
+ * @buffer_p: address of buffer holding input
+ * Return: number of bytes read
  */
 
 ssize_t _getline(char **buffer_p)
@@ -18,11 +18,10 @@ ssize_t _getline(char **buffer_p)
 	return (r);
 }
 /**
- * enter_buffer - bufffer to cintain string
+ * enter_buffer - buffer to hold string
  * @ptr_buffer: address of buffer
  * @len: length of buffer
- * @var: variable
- * Return: buffer
+ * Return: bytes read on success
  */
 ssize_t enter_buffer(char **ptr_buffer, size_t *len)
 {
@@ -47,11 +46,10 @@ ssize_t enter_buffer(char **ptr_buffer, size_t *len)
 	return (r);
 }
 /**
- * my_getline - shell getlin function
+ * my_getline - gets input froma user
  * @ptr_buffer:pointer to buffer
  * @length:SIZE
- * @var:variable
- * Return:my getline
+ * Return: nytes read on success
  */
 ssize_t my_getline(char **ptr_buffer, size_t *length)
 {

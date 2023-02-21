@@ -51,7 +51,7 @@ int _unsetenv(char **args)
 }
 
 /**
- * _exit - exit the current child process & free what must be free'd
+ * my_exit - exit the current child process & free what must be free'd
  * @args: Double pointer to the command and given args
  * @input: The original input from the user
  *

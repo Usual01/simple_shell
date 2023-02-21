@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * output - decide what to do with @args
+ * output_cmd - decide what to do with @args
  *
  * @args: array of argument strings
  *
@@ -20,7 +20,7 @@ void output_cmd(char **args)
 }
 
 /**
- * execute - execute a program
+ * execute_cmd - execute a program
  *
  * @args: array of argument strings
  *

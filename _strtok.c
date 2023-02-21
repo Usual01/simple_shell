@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * make_args - make array of pointer arguments
+ * _strtok - make array of pointer arguments
  *
  * @input: User input to be turned into arguments
  *
