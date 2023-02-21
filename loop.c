@@ -39,13 +39,13 @@ void loop(void)
 	{
 		inchild = 0;
 		_puts("$ ");
-		if (getline(&buffer, &size, stdin) != -1)
+		if (_getline(&buffer) != -1)
 		{
 			if (buffer[0] != '\n' && buffer[0] != '#')
 			{
 				argv = _strtok(buffer);
 				command = argv[0];
-				if (check_builtins(argv, buffer) == -1)
+				if (check_built_in(argv, buffer) == -1)
 				{
 					inchild = 1;
 					output(argv);

@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * _unsetenv - unset an environment variable
+ * my_unsetenv - unset an environment variable
  *
  * @name: name of variable
  *
  * Return: 0 on success, -1 on failure
  */
-int _unsetenv(char *name)
+int my_unsetenv(char *name)
 {
 	char **ep;
 	int len;
@@ -54,14 +54,14 @@ char *_findenv(char *name)
 }
 
 /**
- * _addenv - add or modify an environment variable
+ * my_setenv - add or modify an environment variable
  *
  * @newvar: variable and value
  * @name: name of variable to add or modify
  *
  * Return: 0 if success, -1 if failure
  */
-int _addenv(char *newvar, char *name)
+int my_setenv(char *newvar, char *name)
 {
 	char **newenv, **newhead;
 	size_t i;

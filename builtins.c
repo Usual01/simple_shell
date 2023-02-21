@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * hosh_setenv - set an environment variable
+ * _setenv - set an environment variable
  *
  * @args: argument array
  *
  * Return: 0 on success, -1 on failure
  */
-int hosh_setenv(char **args)
+int _setenv(char **args)
 {
 	char *envp;
 	int i, j, len;
@@ -17,7 +17,7 @@ int hosh_setenv(char **args)
 		_puts("setenv syntax: setenv VARIABLE VALUE\n");
 		return (-1);
 	}
-	_unsetenv(args[1]);
+	my_unsetenv(args[1]);
 	len = 0;
 	for (i = 2; args[i] != NULL; i++)
 		for (j = 0; args[i][j] != '\0'; j++, len++)
@@ -31,33 +31,33 @@ int hosh_setenv(char **args)
 		if (args[i + 1] != NULL)
 			envp = str_concat(envp, " ");
 	}
-	if (_addenv(envp, args[1]) != 0)
+	if (my_setenv(envp, args[1]) != 0)
 		return (-1);
 	return (0);
 }
 
 /**
- * hosh_unsetenv - unset an environment variable
+ * _unsetenv - unset an environment variable
  *
  * @args: argument array
  *
  * Return: 0 if success, -1 if failure
  */
-int hosh_unsetenv(char **args)
+int _unsetenv(char **args)
 {
 	if (args[1] == NULL)
 		return (-1);
-	return (_unsetenv(args[1]));
+	return (my_unsetenv(args[1]));
 }
 
 /**
- * hosh_exit - exit the current child process & free what must be free'd
+ * _exit - exit the current child process & free what must be free'd
  * @args: Double pointer to the command and given args
  * @input: The original input from the user
  *
  * Return: 0 if success, 1 if failure
  */
-int hosh_exit(char **args, char *input)
+int my_exit(char **args, char *input)
 {
 	int status;
 
@@ -83,12 +83,12 @@ int hosh_exit(char **args, char *input)
 }
 
 /**
- * hosh_printenv - print the list of environment variables
+ * _printenv - print the list of environment variables
  * @args: Arguments passed to hosh_printenv
  *
  * Return: 0 on success, 1 on failure
  */
-int hosh_printenv(char **args)
+int _printenv(char **args)
 {
 	char c;
 	int i, j;
@@ -115,7 +115,7 @@ int hosh_printenv(char **args)
  *
  * Return: 0 on success, 1 on failure
  */
-int hosh_help(char **args)
+int _help(char **args)
 {
 	help_t builtins[] = {
 		{"exit", help_exit},
