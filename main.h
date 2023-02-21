@@ -56,7 +56,7 @@ typedef struct help_s
 
 /* --General Functions-- */
 void loop(void);
-char **make_args(char *input);
+char **_strtok(char *input);
 int wordcount(char *str);
 char *tokenize(char *input, const char *delim, char **saveptr);
 void output(char **args);
@@ -110,3 +110,4 @@ void help_setenv(void);
 void help_unsetenv(void);
 void help_help(void);
 void print_help(void);
+#endif

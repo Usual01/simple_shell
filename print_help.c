@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * print_help - Print out basic info on builtins
@@ -14,3 +14,4 @@ void print_help(void)
 	_puts("   setenv [variable] [value]\n");
 	_puts("   unsetenv [variable]\n");
 	_puts("   help [name ...]\n");
+}

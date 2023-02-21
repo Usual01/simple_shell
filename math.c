@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * _atoi - Convert string into an integer
@@ -21,3 +21,4 @@ int _atoi(char *str)
 		i++;
 	}
 	return (num);
+}

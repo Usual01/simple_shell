@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * output - decide what to do with @args

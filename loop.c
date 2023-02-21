@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * main - initialization of shell
@@ -25,7 +25,7 @@ int main(int ac, char **av, char **env)
  */
 void loop(void)
 {
-	char *input, **args, *firstarg;
+	char *buffer, **argv, *command;
 	int looped;
 	size_t size;
 
@@ -34,32 +34,32 @@ void loop(void)
 
 	size = 0;
 	looped = 0;
-	input = NULL;
+	buffer = NULL;
 	while (1)
 	{
 		inchild = 0;
-		_puts("Hosh$ ");
-		if (getline(&input, &size, stdin) != -1)
+		_puts("$ ");
+		if (getline(&buffer, &size, stdin) != -1)
 		{
-			if (input[0] != '\n' && input[0] != '#')
+			if (buffer[0] != '\n' && buffer[0] != '#')
 			{
-				args = make_args(input);
-				firstarg = args[0];
-				if (check_builtins(args, input) == -1)
+				argv = _strtok(buffer);
+				command = argv[0];
+				if (check_builtins(argv, buffer) == -1)
 				{
 					inchild = 1;
-					output(args);
+					output(argv);
 				}
-				if (check_arg(firstarg, args[0]) == 0)
-					free(args);
+				if (check_arg(command, argv[0]) == 0)
+					free(argv);
 				else
-					free_array(args);
+					free_array(argv);
 				looped++;
 			}
 		}
 		else
 		{
-			free(input);
+			free(buffer);
 			_putchar('\n');
 			_exit(0);
 		}
@@ -74,5 +74,6 @@ void sighandler(int sig_num)
 {
 	(void)sig_num;
 	if (inchild == 0)
-		_puts("\nHosh$ ");
+		_puts("\n$ ");
 	signal(SIGINT, sighandler);
+}

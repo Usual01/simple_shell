@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * _unsetenv - unset an environment variable
@@ -88,3 +88,4 @@ int _addenv(char *newvar, char *name)
 	else
 		return (-1);
 	return (0);
+}

@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * check_builtins - Check to see if given command is a builtin
@@ -29,3 +29,4 @@ int check_builtins(char **args, char *input)
 			return (builtins[i].func(args));
 	}
 	return (-1);
+}

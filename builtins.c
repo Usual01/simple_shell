@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * hosh_setenv - set an environment variable
@@ -154,3 +154,4 @@ int hosh_help(char **args)
 		return (0);
 	_puts("Sorry. Could not find help for that command.\n");
 	return (1);
+}
