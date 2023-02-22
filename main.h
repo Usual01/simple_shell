@@ -66,7 +66,7 @@ int check_arg(char *firstarg, char *arg0);
 /* --Memory Functions-- */
 void free_array(char **array);
 void *smart_alloc(size_t size);
-
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 /* --Path Functions-- */
 char **check_path(char **args);
 char *path_concat(char *s1, char *s2);

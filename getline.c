@@ -73,7 +73,7 @@ ssize_t my_getline(char **ptr_buffer, size_t *length)
 		len1 = (unsigned int)(str2 - buf) + 1;
 	else
 		len1 = len;
-	string = realloc(str, oldsize ? oldsize + len1 : len1 + 1);
+	string = _realloc(str, oldsize, oldsize ? oldsize + len1 : len1 + 1);
 	if (string == NULL)
 	{
 		if (str != NULL)
