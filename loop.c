@@ -28,14 +28,10 @@ void loop(void)
 	char *buffer, **argv, *command;
 	int looped;
 
-	signal(SIGINT, sighandler);
-	signal(SIGQUIT, SIG_IGN);
-
 	looped = 0;
 	buffer = NULL;
 	while (1)
 	{
-		inchild = 0;
 		_puts("$ ");
 		if (_getline(&buffer) != -1)
 		{
@@ -45,7 +41,6 @@ void loop(void)
 				command = argv[0];
 				if (check_built_in(argv, buffer) == -1)
 				{
-					inchild = 1;
 					output_cmd(argv);
 				}
 				if (check_arg(command, argv[0]) == 0)
@@ -62,16 +57,4 @@ void loop(void)
 			_exit(0);
 		}
 	}
-}
-
-/**
- * sighandler - Print out the prompt if ctrl-C is hit
- * @sig_num: Unused variable necessary for sighandler function types
- */
-void sighandler(int sig_num)
-{
-	(void)sig_num;
-	if (inchild == 0)
-		_puts("\n$ ");
-	signal(SIGINT, sighandler);
 }
