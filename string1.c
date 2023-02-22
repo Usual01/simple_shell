@@ -1,124 +1,87 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * _strlen - return the length of a string
+ * _strcpy - copies a string
+ * @dest: the destination
+ * @src: the source
  *
- * @s: string whose length to return
- *
- * Return: length of @s
+ * Return: pointer to destination
  */
-int _strlen(char *s)
+char *_strcpy(char *dest, char *src)
 {
-	int m;
+	int i = 0;
 
-	m = 0;
-	while (s[m] != '\0')
-		m++;
-	return (m);
+	if (dest == src || src == 0)
+		return (dest);
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+	return (dest);
 }
 
 /**
- * _strdup - return a pointer to a duplicate string of @str
+ * _strdup - duplicates a string
+ * @str: the string to duplicate
  *
- * @str: string to duplicate
- *
- * Return: pointer to duplicate string; NULL if insufficient memory
+ * Return: pointer to the duplicated string
  */
-char *_strdup(char *str)
+char *_strdup(const char *str)
 {
-	char *a;
-	int i, size;
-
+	int length = 0;
+	char *ret;
 
 	if (str == NULL)
 		return (NULL);
-	size = _strlen(str);
-	a = smart_alloc((size + 1) * sizeof(char));
-	if (a == NULL)
+	while (*str++)
+		length++;
+	ret = malloc(sizeof(char) * (length + 1));
+	if (!ret)
 		return (NULL);
-
-	for (i = 0; i < size; i++)
-	{
-		a[i] = str[i];
-	}
-	a[i] = str[i];
-	return (a);
+	for (length++; length--;)
+		ret[length] = *--str;
+	return (ret);
 }
 
 /**
- * _strspn - get the length of a prefix substring
+ *_puts - prints an input string
+ *@str: the string to be printed
  *
- * @s: string to search
- * @accept: substring to compare string with
- *
- * Return: number of bytes in th initial segment of @s which consist of only
- * bytes from @accept
+ * Return: Nothing
  */
-int _strspn(char *s, const char *accept)
+void _puts(char *str)
 {
-	int i, j, flag, count;
+	int i = 0;
 
-	i = flag = count = 0;
-	while (s[i] && count == i)
+	if (!str)
+		return;
+	while (str[i] != '\0')
 	{
-		for (j = 0; accept[j] && !flag; j++)
-		{
-			if (accept[j] == s[i])
-			{
-				count++;
-				flag = 1;
-			}
-		}
-		flag = 0;
+		_putchar(str[i]);
 		i++;
 	}
-	return (count);
 }
 
 /**
- * _strchr - locate a character in a string
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
  *
- * @s: pointer to string
- * @c: character
- *
- * Return: pointer to first occurrence of @c in @s
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-char *_strchr(char *s, char c)
+int _putchar(char c)
 {
-	int i;
+	static int i;
+	static char buf[WRITE_BUF_SIZE];
 
-	for (i = 0; s[i] != 0; i++)
-		if (s[i] == c)
-			return (s + i);
-	if (s[i] == c)
-		return (s + i);
-	return (NULL);
-}
-
-/**
- * _strpbrk - search string @s for the first occurance of any bytes of @accept
- *
- * @s: string to search
- * @accept: string to search @s for bytes from
- *
- * Return: a pointer to the byte @s that matches one of the bytes in accept,
- * otherwise NULL
- */
-char *_strpbrk(char *s, const char *accept)
-{
-	int i, j;
-
-	i = 0;
-	while (s[i])
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		j = 0;
-		while (accept[j])
-		{
-			if (accept[j] == s[i])
-				return (s + i);
-			j++;
-		}
-		i++;
+		write(1, buf, i);
+		i = 0;
 	}
-	return (NULL);
+	if (c != BUF_FLUSH)
+		buf[i++] = c;
+	return (1);
 }
