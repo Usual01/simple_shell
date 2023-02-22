@@ -1,0 +1,20 @@
+HOW TO BEGIN CREATING YOUR OWN SHELL IN CODE
+Prompt & Promptly Irrelevant Discourse
+There is a unique identifier for each instance of a running program, which is known as a process. Numerous functions and system calls depend on the process ID to communicate with and manipulate processes. The getpid system call can be used to get the ID of the active process.
+
+
+There is a relationship between all processes and their progenitors. The getppid system call (man 2 getppid) can be used within a child process to retrieve the parent process's PID.
+Putting code into action
+Executing another process is possible with the execve system call (man 2 execve). You should know that on success execve does not return to continue the rest of the "previous" program, but instead loads the new program in place of it in the memory of the current process.
+Methods of Production
+A new process, nearly identical to the parent, is created by the system call fork (man 2 fork) (the process that calls fork). The same program is now being executed in two separate processes, each with its own independent stack, data, and heap, once fork returns successfully.
+
+For example, if the current process is the child, fork will return 0 to it, while the PID of the child will be returned to the parent.
+Wait
+When a process makes a wait system call (man 2 wait), it halts until one of its children finishes.
+
+Environment
+We already know that the shell keeps track of our various environment variables in a list called an environment list. Strings are stored in an array with the following format: var=value, where var is the variable's name and value is its value. To review your current setting, type printenv.
+
+In reality, however, each and every process has its own unique environment. It's common practice for a child process to receive a carbon copy of its parent's environment when it's created. There are multiple routes you can take within a process to access the entire environment:
+Through the Init Function, the Env Variable, and the Main Function
