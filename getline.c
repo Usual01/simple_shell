@@ -33,8 +33,7 @@ ssize_t enter_buffer(char **ptr_buffer, size_t *len)
 		*ptr_buffer = NULL;
 		signal(SIGINT, sigintHandler);
 		r = my_getline(ptr_buffer, &length);
-	/**
-	 * if (r > 0);
+	 	if (r > 0)
 		{
 			if ((*ptr_buffer)[r - 1] == '\n')
 			{
@@ -42,7 +41,6 @@ ssize_t enter_buffer(char **ptr_buffer, size_t *len)
 				r--;
 			}
 		}
-		*/
 	}
 	return (r);
 }
