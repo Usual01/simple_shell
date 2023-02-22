@@ -90,3 +90,4 @@ int _setenv(info_t *info, char *var, char *value)
 	free(buf);
 	info->env_changed = 1;
 	return (0);
+}
