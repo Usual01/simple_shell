@@ -31,6 +31,7 @@ ssize_t enter_buffer(char **ptr_buffer, size_t *len)
 	if (*len == 0)
 	{
 		*ptr_buffer = NULL;
+		signal(SIGINT, sigintHandler);
 		r = my_getline(ptr_buffer, &length);
 	/**
 	 * if (r > 0);
@@ -92,4 +93,16 @@ ssize_t my_getline(char **ptr_buffer, size_t *length)
 		*length = oldsize;
 	*ptr_buffer = str;
 	return (oldsize);
+}
+/**
+ * sigintHandler - blocks ctrl-C
+ * @sig_num: the signal number
+ *
+ * Return: void
+ */
+void sigintHandler(__attribute__((unused))int sig_num)
+{
+	_puts("\n");
+	_puts("$ ");
+	_putchar(-1);
 }

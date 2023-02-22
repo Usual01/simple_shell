@@ -5,7 +5,6 @@
 #define BUFFER_SIZE 1024
 /* --Global Variables-- */
 extern char **environ;
-int inchild;
 
 /* --Address List-- */
 /**
@@ -61,7 +60,7 @@ int wordcount(char *str);
 char *tokenize(char *input, const char *delim, char **saveptr);
 void output_cmd(char **args);
 void execute_cmd(char **args);
-void sighandler(int sig_num);
+void sigintHandler(__attribute__((unused))int sig_num);
 int check_arg(char *firstarg, char *arg0);
 
 /* --Memory Functions-- */
